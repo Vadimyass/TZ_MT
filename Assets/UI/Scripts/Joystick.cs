@@ -1,15 +1,16 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 public class Joystick : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDownHandler
 {
-    public RectTransform background; // Фон джойстика
-    public RectTransform handle;     // Указатель джойстика
-    public float handleLimit = 1f;   // Ограничение движения ручки (1 = граница круга)
+    [SerializeField] private RectTransform _background;
+    [SerializeField] private RectTransform _handle;
+    private float _handleLimit = 1f;
 
-    private Vector2 inputVector;
+    private Vector2 _inputVector;
 
-    public Vector2 InputVector => inputVector; // Для получения текущего направления
+    public Vector2 InputVector => _inputVector;
 
     public void Show()
     {
@@ -23,16 +24,13 @@ public class Joystick : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointer
     public void OnDrag(PointerEventData eventData)
     {
         Vector2 localPoint;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(background, eventData.position, eventData.pressEventCamera, out localPoint);
-
-        // Вычисляем радиус фона джойстика
-        float radius = background.rect.width / 2f; // Для круга берём ширину (или высоту, если они равны)
-
-        // Нормализуем позицию в пределах радиуса
-        inputVector = localPoint.magnitude > radius ? localPoint.normalized : localPoint / radius;
-
-        // Перемещение ручки джойстика
-        handle.anchoredPosition = inputVector * radius * handleLimit;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(_background, eventData.position, eventData.pressEventCamera, out localPoint);
+        
+        float radius = _background.rect.width / 2f;
+        
+        _inputVector = localPoint.magnitude > radius ? localPoint.normalized : localPoint / radius;
+        
+        _handle.anchoredPosition = _inputVector * radius * _handleLimit;
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -42,7 +40,7 @@ public class Joystick : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointer
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        inputVector = Vector2.zero;
-        handle.anchoredPosition = Vector2.zero;
+        _inputVector = Vector2.zero;
+        _handle.anchoredPosition = Vector2.zero;
     }
 }

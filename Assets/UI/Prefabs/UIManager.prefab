@@ -49,9 +49,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 943625ae02f7344439abe91c4491bd44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  background: {fileID: 2758709473673083689}
-  handle: {fileID: 8171911320579436325}
-  handleLimit: 1
+  _background: {fileID: 2758709473673083689}
+  _handle: {fileID: 8171911320579436325}
 --- !u!1 &1206387767573111020
 GameObject:
   m_ObjectHideFlags: 0
