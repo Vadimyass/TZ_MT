@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1444b62c51543c6a4a6e74b10e6c79e, type: 3}
+  m_Name: LevelConfig
+  m_EditorClassIdentifier: 
+  _levels:
+  - <Index>k__BackingField: 0
+    <Seed>k__BackingField: MysteryTag1
+  - <Index>k__BackingField: 1
+    <Seed>k__BackingField: MysteryTag2
+  - <Index>k__BackingField: 2
+    <Seed>k__BackingField: MysteryTag3
